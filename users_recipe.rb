@@ -1,3 +1,5 @@
+require "./login_users"
+
 $USERS.each do |u, p|
   user u do
     action :create

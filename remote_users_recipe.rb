@@ -8,7 +8,7 @@ $USERS.each do |u, p|
 
   SSH_KEY = %x(sudo cat "/home/#{u}/.ssh/id_rsa.pub")
 
-  directory "/home/" + u + "/.ssh" do
+  directory "/home/#{u}/.ssh" do
     user u
     owner u
     group u

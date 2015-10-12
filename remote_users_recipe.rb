@@ -1,4 +1,4 @@
-node['users'].times do |i|
+node['users'].length.times do |i|
   salt = ((0..9).to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(2).join
   user_name = node['users'][i]['user_name']
   user_password = node['users'][i]['user_password']

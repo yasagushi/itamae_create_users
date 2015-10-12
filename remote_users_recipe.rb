@@ -11,16 +11,16 @@ node['users'].length.times do |i|
   SSH_KEY = %x(sudo cat "/home/#{user_name}/.ssh/id_rsa.pub")
 
   directory "/home/#{user_name}/.ssh" do
-    user u
-    owner u
-    group u
+    user user_name
+    owner user_name
+    group user_name
     mode "700"
   end
 
   file "/home/#{user_name}/.ssh/authorized_keys" do
     content SSH_KEY
-    owner u
-    group u
+    owner user_name
+    group user_name
     mode "600"
   end
 

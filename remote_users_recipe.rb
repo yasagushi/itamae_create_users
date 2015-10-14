@@ -4,7 +4,7 @@ node['users'].length.times do |i|
   user_password = node['users'][i]['user_password']
 
   execute "create users" do
-    command "sudo useradd #{user_name} -p `perl -e \"print(crypt(#{user_password}, salt));\"`"
+    command "sudo useradd -p `perl -e \"print(crypt(\'#{user_password}\', salt));\"` #{user_name}"
     not_if "grep #{user_name} /etc/passwd"
   end
 

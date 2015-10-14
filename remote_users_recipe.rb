@@ -24,8 +24,10 @@ node['users'].length.times do |i|
     mode "600"
   end
 
-  execute "add user to wheel group" do
-    command "usermod -G wheel #{user_name}"
-    not_if "groups #{user_name} | grep 'wheel'"
+  if node['users'][i]['user_type'] == "admin" then
+    execute "add user to wheel group" do
+      command "sudo usermod -G wheel #{user_name}"
+      not_if "groups #{user_name} | grep 'wheel'"
+    end
   end
 end
